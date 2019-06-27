@@ -7,6 +7,10 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
 
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.0"/>
+
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find t3_course)/worlds/urdf_demo.world"/>
@@ -17,14 +21,10 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description"
-   command="$(find xacro)/xacro.py '$(find open_manipulator_with_tb3)/urdf/open_manipulator_chain_with_tb3.xacro'"/>
+    <include file="$(find turtlebot3_gazebo)/launch/put_robot_in_world_open_manipulator_tb3.launch">
+        <arg name="x" value="$(arg x)" />
+        <arg name="y" value="$(arg y)" />
+        <arg name="z" value="$(arg z)" />
+    </include>
 
-  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-     args="-urdf -model open_manipulator_chain_with_tb3 -z 0.0 -param robot_description"/>
-
-  <!-- ros_control robotis manipulator launch file -->
-  <include file="$(find open_manipulator_gazebo)/launch/trajectory_controller.launch"/>
 </launch>
