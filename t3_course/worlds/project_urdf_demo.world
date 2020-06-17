@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <sdf version='1.6'>
   <world name='default'>
     <gravity>0 0 -9.8</gravity>
@@ -35,7 +36,7 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <!-- <model name='cricket_ball'>
+    <model name='cricket_ball'>
       <link name='link'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <inertial>
@@ -87,12 +88,6 @@
               <scale>0.009 0.009 0.009</scale>
             </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Red</name>
-            </script>
-          </material>
         </visual>
         <velocity_decay>
           <linear>0</linear>
@@ -102,7 +97,7 @@
         <kinematic>0</kinematic>
       </link>
       <pose frame=''>0.15003 -5.5e-05 0.82 0.003644 -0.00082 0.000309</pose>
-    </model> -->
+    </model>
     <include>
       <uri>model://pringles</uri>
       <pose>-0.497 0 0.0 0 0 2.62</pose>
