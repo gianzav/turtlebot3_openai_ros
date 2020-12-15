@@ -11,6 +11,7 @@
         <arg name="gui" value="true"/>
         <arg name="headless" value="false"/>
         <arg name="debug" value="false"/>
+        <arg name="verbose" value="true"/>
     </include>
 
     <include file="$(find turtlebot3_gazebo)/launch/put_robot_in_world.launch">
